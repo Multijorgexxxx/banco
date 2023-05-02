@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-4">
+            <h1>Crear Cuenta</h1>
+
+            <div class="container">
+                <form action="/crear_cuenta/" method="post" class="card card-body text-center">
+                    {% if error %}
+                    <div class="alert alert-danger" role="alert">
+                        <svg class="bi flex-shrink-0 sm-2" role="img" width="20" height="20" aria-label="Danger:">
+                            <use xlink:href="#exclamation-triangle-fill" />
+                        </svg>
+                        {{error}}
+                    </div>
+                    {% endif %}
+                    {% csrf_token %}
+                    <div class="row input-group mb-3">
+                        <div class="form-group col-sm-4">
+                            <label for="id_first_name">Nombre :</label>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            {{form.first_name}}
+                        </div>
+                    </div>
+                    <div class="row input-group mb-3">
+                        <div class="form-group col-sm-4">
+                            <label for="id_last_name">Apellido :</label>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            {{form.last_name}}
+                        </div>
+                    </div>
+                    <div class="row input-group mb-3">
+                        <div class="form-group col-sm-4">
+                            <label for="id_email">Correo Electronico :</label>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            {{form.email}}
+                            <span class="input-group-text" id="basic-addon2">@example.com</span>
+                        </div>
+                    </div>
+                    <div class="row input-group mb-3">
+                        <div class="form-group col-sm-4">
+                            <label for="id_valor">Valor Inicial:</label>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <input type="number" name="valor" class="form-control" required="" autocomplete="off" aria-describedby="basic-addon2" aria-label="Recipient's username" maxlength="11" id="id_valor">
+                            <span class="input-group-text" id="basic-addon2">000000$</span>
+                        </div>
+                    </div>
+                    <div class="row input-group mb-3">
+                        <div class="form-group col-sm-4">
+                            <label for="id_username">Cedula :</label>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            {{form.username}}
+                        </div>
+                    </div>
+                    <div class="row input-group mb-3">
+                        <div class="form-group col-sm-4">
+                            <label for="id_password">Contraseña :</label>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <input type="password" name="password1" class="form-control" required="" autocomplete="off"
+                                maxlength="128" id="id_password">
+                        </div>
+                    </div>
+                    <div class="row input-group mb-3">
+                        <div class="col-sm-4">
+                            <label for="id_password">Confirme Contraseña :</label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="password" name="password2" class="form-control" required="" autocomplete="off"
+                                maxlength="128" id="id_password">
+                        </div>
+                    </div>
+                    <button class="btn btn-success">Crear Cuenta</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

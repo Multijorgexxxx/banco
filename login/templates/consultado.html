@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <span>
+            <h1>Bienvenido Sr(a). {{ usuario.first_name }} {{ usuario.last_name }}
+            </h1>
+        </span>
+    </div>
+    <br>
+    <div class="row">
+        <span>
+            <h3>
+                CUENTA DE AHORROS #{{ cuenta.NUMERO_CUENTA }}
+            </h3>
+        </span>
+    </div>
+    {% if ok %}
+    <div class="alert alert-success d-flex align-items-center" role="alert">
+        <svg class="bi flex-shrink-0 me-2" role="img" width="20" height="20" aria-label="success:">
+            <use xlink:href="#exclamation-triangle-fill" />
+        </svg>
+        <div>
+            {{ok}}
+        </div>
+    </div>
+    {% endif %}
+    {% if valor %}
+    <div class="row">
+        <span>
+            <h3>
+                VALOR ACTUAL DE LA CUENTA: ${{ valor }}
+            </h3>
+        </span>
+    </div>
+    {% endif %}
+    <div class="row">
+        <div class="row input-group mb-3">
+            <div class="form-group col-sm-6">
+                <button class="btn btn-success">Realizar retiro</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-4">
+            <h1>Realizar Consignacion</h1>
+            <div class="container">
+                {% if error %}
+                <div class="alert alert-danger d-flex align-items-center" role="alert">
+                    <svg class="bi flex-shrink-0 me-2" role="img" width="20" height="20" aria-label="Danger:">
+                        <use xlink:href="#exclamation-triangle-fill" />
+                    </svg>
+                    <div>
+                        {{error}}
+                    </div>
+                </div>
+                {% endif %}
+                {% if ok %}
+                <div class="alert alert-success d-flex align-items-center" role="alert">
+                    <svg class="bi flex-shrink-0 me-2" role="img" width="20" height="20" aria-label="success:">
+                        <use xlink:href="#exclamation-triangle-fill" />
+                    </svg>
+                    <div>
+                        {{ok}}
+                    </div>
+                </div>
+                {% endif %}
+                <form method="post" class="card card-body text-center">
+                    {% csrf_token %}
+                    <div class="row input-group mb-3">
+                        <div class="form-group col-sm-5">
+                            <label for="id_numero_cuenta">Numero de Cuenta :</label>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <input type="text" name="numero_cuenta" class="form-control" required="" autocomplete="off"
+                                maxlength="50" id="id_numero_cuenta">
+                        </div>
+                    </div>
+                    <div class="row input-group mb-3">
+                        <div class="form-group col-sm-5">
+                            <label for="id_valor">Valor a Consignar :</label>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <input type="number" name="valor" class="form-control" required="" autocomplete="off"
+                                maxlength="128" id="id_valor">
+                        </div>
+                    </div>
+                    <div class="row input-group mb-3">
+                        <div class="form-group col-sm-6">
+                            <button class="btn btn-success">Consignar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

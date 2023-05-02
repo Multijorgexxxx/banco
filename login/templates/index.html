@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+{% if user.is_authenticated %}
+
+<div class="container">
+    <div class="row">
+        <span>
+            <h1>Bienvenido Sr(a). {{ usuario.first_name }} {{ usuario.last_name }}
+            </h1>
+        </span>
+    </div>
+    <br>
+    <div class="row">
+        <span>
+            <h3>
+                CUENTA DE AHORROS #{{ cuenta.NUMERO_CUENTA }}
+            </h3>
+        </span>
+    </div>
+    {% if valor %}
+    <div class="row">
+        <span>
+            <h3>
+                VALOR ACTUAL DE LA CUENTA: ${{ valor }}
+            </h3>
+        </span>
+    </div>
+    {% endif %}
+    <div class="row">
+        <div class="row input-group mb-3">
+            <div class="form-group col-sm-6">
+                <a class="btn btn-success" href="/retirar/">Realizar retiro</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% else %}
+<div class="container">
+    <div class="row">
+        <span>
+            <h1>
+                Bienvenido por favor inicie sesion
+            </h1>
+        </span>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}
